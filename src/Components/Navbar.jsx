@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,21 +11,58 @@ const Navbar = () => {
 
   const navLinks = [
     <>
-      <li>
-        <a className="hover:text-yellow-500">Home</a>
-      </li>
-      <li>
-        <a className="hover:text-yellow-500">Shop</a>
-      </li>
-      <li>
-        <a className="hover:text-yellow-500">Blog</a>
-      </li>
-      <li>
-        <a className="hover:text-yellow-500">About Us</a>
-      </li>
-      <li>
-        <a className="hover:text-yellow-500">Contact Us</a>
-      </li>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "text-yellow-500 border-b-2 border-yellow-500"
+            : "hover:text-yellow-500"
+        }
+      >
+        <li>
+          <p>Home</p>
+        </li>
+      </NavLink>
+      <NavLink
+        to="/shop"
+        className={({ isActive }) =>
+          isActive ? "text-yellow-500 border-b-2 border-yellow-500" : "hover:text-yellow-500"
+        }
+      >
+        <li>
+          <p>Shop</p>
+        </li>
+      </NavLink>
+      <NavLink
+        to="/blog"
+        className={({ isActive }) =>
+          isActive ? "text-yellow-500" : "hover:text-yellow-500"
+        }
+      >
+        <li>
+          <p>Blog</p>
+        </li>
+      </NavLink>
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          isActive ? "text-yellow-500" : "hover:text-yellow-500"
+        }
+      >
+        <li>
+          <p>About Us</p>
+        </li>
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive ? "text-yellow-500" : "hover:text-yellow-500"
+        }
+      >
+        <li>
+          <p>Contact Us</p>
+        </li>
+      </NavLink>
     </>,
   ];
 
@@ -56,10 +94,31 @@ const Navbar = () => {
         {/* Navbar End */}
         <div className="navbar-end flex items-center space-x-4">
           <a className=" hidden lg:block">
-            <span className="hover:text-yellow-500 font-semibold">Login</span> /{" "}
-            <span className="hover:text-yellow-500 font-semibold">
-              Register
-            </span>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-yellow-500 border-b-2 border-yellow-500"
+                  : "hover:text-yellow-500"
+              }
+              to="/Login"
+            >
+              <button className="hover:text-yellow-500 font-semibold">
+                Login
+              </button>
+            </NavLink>{" "}
+            /{" "}
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-yellow-500 border-b-2 border-yellow-500"
+                  : "hover:text-yellow-500"
+              }
+              to="/Register"
+            >
+              <button className="hover:text-yellow-500 font-semibold">
+                Register
+              </button>
+            </NavLink>
           </a>
           <a className="text-xl hover:text-yellow-500 hidden lg:block">
             <i className="far fa-heart"></i>
@@ -93,17 +152,35 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden bg-gray-900 text-white p-4">
-          <ul className="space-y-4">
-           {navLinks}
-          </ul>
+          <ul className="space-y-4">{navLinks}</ul>
           <div className="mt-4 space-y-2">
-            <a className="block ">
-              <span className="hover:text-yellow-500 font-semibold">Login</span>{" "}
+            <p className="block ">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-500 border-b-2 border-yellow-500"
+                    : "hover:text-yellow-500"
+                }
+                to="/Login"
+              >
+                <button className="hover:text-yellow-500 font-semibold">
+                  Login
+                </button>
+              </NavLink>{" "}
               /{" "}
-              <span className="hover:text-yellow-500 font-semibold">
-                Register
-              </span>
-            </a>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-500 border-b-2 border-yellow-500"
+                    : "hover:text-yellow-500"
+                }
+                to="/Register"
+              >
+                <button className="hover:text-yellow-500 font-semibold">
+                  Register
+                </button>
+              </NavLink>
+            </p>
             <a className="block text-xl hover:text-yellow-500">
               <i className="far fa-heart"></i>
             </a>
