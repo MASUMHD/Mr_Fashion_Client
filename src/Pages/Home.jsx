@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import Banner from "../Components/Home/Banner";
 import FeaturedProduct from "../Components/Home/FeaturedProduct";
 import Testimonials from "../Components/Home/Testimonials";
+import Categories from "../Components/Home/Categories";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <div className="container mx-auto">
           <FeaturedProduct />
           <Testimonials/>
+          <Categories/>
         </div>
       </div>
     </div>

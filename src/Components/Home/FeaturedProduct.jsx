@@ -15,8 +15,8 @@ const FeaturedProduct = () => {
     ];
   
     return (
-      <div className="container mx-auto p-6 mt-12">
-        <h1 className="text-3xl lg:text-4xl font-bold text-center mb-10">Featured Product</h1>
+      <div className="container mx-auto p-6 mt-16">
+        <h1 className="text-3xl lg:text-4xl font-bold text-center mb-16">Featured Product</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-center">
           {products.map((product, index) => (
             <div key={index} className="text-center flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg">
@@ -29,7 +29,7 @@ const FeaturedProduct = () => {
             </div>
           ))}
         </div>
-        <div className="text-center mt-9">
+        <div className="text-center mt-12">
           <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600">
             See More
           </button>
