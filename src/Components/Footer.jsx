@@ -147,7 +147,7 @@ const Footer = () => {
       <footer>
         <hr />
         <div className="text-center mt-10 pb-10">
-          <p>© 2022 KlbTheme. All Rights Reserved.</p>
+          <p>© 2024 KlbTheme. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

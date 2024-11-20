@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Components/Home/Banner";
+import FeaturedProduct from "../Components/Home/FeaturedProduct";
+import Testimonials from "../Components/Home/Testimonials";
 
 const Home = () => {
   return (
@@ -10,7 +12,8 @@ const Home = () => {
       <div className="mt-[64px]">
         <Banner />
         <div className="container mx-auto">
-          <h1> Welcome to Home</h1>
+          <FeaturedProduct />
+          <Testimonials/>
         </div>
       </div>
     </div>
