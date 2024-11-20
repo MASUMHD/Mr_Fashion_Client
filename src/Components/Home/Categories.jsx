@@ -1,7 +1,7 @@
 import { FaTshirt, FaUserTie, FaFemale, FaMale } from "react-icons/fa";
 import { GiShirt, GiClothes } from "react-icons/gi";
 import { BsPencil, BsBoxArrowInDown } from "react-icons/bs";
-import { MdOutlineStyle } from "react-icons/md"; // Use MdOutlineStyle for coat or blazer
+import { MdOutlineStyle } from "react-icons/md"; 
 
 const Categories = () => {
   const categories = [
@@ -11,16 +11,16 @@ const Categories = () => {
     { name: "Drop T-Shirt", icon: <GiClothes /> },
     { name: "Polo T-Shirt", icon: <FaTshirt /> },
     { name: "Women", icon: <FaFemale /> },
-    { name: "Panjabi", icon: <MdOutlineStyle /> }, // Use MdOutlineStyle here if you prefer
+    { name: "Panjabi", icon: <MdOutlineStyle /> },
     { name: "Pajama", icon: <BsPencil /> },
     { name: "Pant", icon: <BsBoxArrowInDown /> },
     { name: "Joggers", icon: <FaUserTie /> },
-    { name: "Long Coat", icon: <MdOutlineStyle /> }, // Use MdOutlineStyle for coat or blazer
+    { name: "Long Coat", icon: <MdOutlineStyle /> }, 
     { name: "Blazer", icon: <FaMale /> },
   ];
 
   return (
-    <div className="p-4 mt-12 lg:mt-20">
+    <div className="p-4 mt-12 lg:mt-20  mb-10 lg:mb-16">
       <h1 className="text-center text-3xl lg:text-4xl font-semibold my-4 mb-16">
         Our Product Categories
       </h1>
