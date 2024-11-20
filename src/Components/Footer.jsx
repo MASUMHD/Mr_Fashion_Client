@@ -12,7 +12,6 @@ const Footer = () => {
     <div className="bg-black text-gray-300">
       <footer className="container mx-auto p-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Shopping Guide */}
           <div>
             <h6 className="text-lg font-semibold text-yellow-500">
               SHOPPING GUIDE
@@ -51,7 +50,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Style Advisor */}
           <div>
             <h6 className="text-lg font-semibold text-yellow-500">
               STYLE ADVISOR
@@ -90,7 +88,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Information */}
           <div>
             <h6 className="text-lg font-semibold text-yellow-500">
               INFORMATION
@@ -129,7 +126,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h6 className="text-lg font-semibold text-yellow-500">
               CONTACT US
