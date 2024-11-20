@@ -4,6 +4,7 @@ import FeaturedProduct from "../Components/Home/FeaturedProduct";
 import Testimonials from "../Components/Home/Testimonials";
 import Categories from "../Components/Home/Categories";
 import FAQS from "../Components/Home/FAQS";
+import ContactInfo from "../Components/Home/ContactInfo";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
           <Testimonials/>
           <Categories/>
           <FAQS/>
+          <ContactInfo/>
         </div>
       </div>
     </div>

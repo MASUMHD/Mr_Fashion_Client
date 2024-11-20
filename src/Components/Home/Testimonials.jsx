@@ -15,7 +15,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="w-8 h-8 dark:text-default-600"
+                  className="w-8 h-8 text-yellow-500"
                 >
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
@@ -27,7 +27,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="absolute right-0 w-8 h-8 dark:text-default-600"
+                  className="absolute right-0 w-8 h-8 text-yellow-500"
                 >
                   <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
                   <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
@@ -38,7 +38,7 @@ const Testimonials = () => {
               <img
                 src="https://st4.depositphotos.com/4678277/19602/i/450/depositphotos_196025328-stock-photo-portrait-copyspace-empty-place-advertisement.jpg"
                 alt=""
-                className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+                className="w-16 h-16 mb-2 -mt-16 bg-center border-4 border-yellow-500 bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
               />
               <p className="text-xl font-semibold leading-tight">
                 Mr. Masum
@@ -53,7 +53,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="w-8 h-8 dark:text-default-600"
+                  className="w-8 h-8 text-yellow-500"
                 >
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
@@ -63,7 +63,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="absolute right-0 w-8 h-8 dark:text-default-600"
+                  className="absolute right-0 w-8 h-8 text-yellow-500"
                 >
                   <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
                   <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
@@ -74,7 +74,7 @@ const Testimonials = () => {
               <img
                 src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
                 alt=""
-                className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+                className="w-16 h-16 mb-2 -mt-16 border-4 border-yellow-500 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
               />
               <p className="text-xl font-semibold leading-tight">
                 Mr. Ali
@@ -89,7 +89,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="w-8 h-8 dark:text-default-600"
+                  className="w-8 h-8 text-yellow-500"
                 >
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
@@ -99,7 +99,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="absolute right-0 w-8 h-8 dark:text-default-600"
+                  className="absolute right-0 w-8 h-8 text-yellow-500"
                 >
                   <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
                   <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
@@ -110,7 +110,7 @@ const Testimonials = () => {
               <img
                 src="https://t3.ftcdn.net/jpg/01/42/01/84/360_F_142018449_yR0avsaJqbIx8NA47sINMoaxdtn1sPzh.jpg"
                 alt=""
-                className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+                className="w-16 h-16 mb-2 -mt-16 bg-center border-4 border-yellow-500 bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
               />
               <p className="text-xl font-semibold leading-tight">
                 Saimon rahman
@@ -125,7 +125,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="w-8 h-8 dark:text-default-600"
+                  className="w-8 h-8 text-yellow-500"
                 >
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
@@ -135,7 +135,7 @@ const Testimonials = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                   fill="currentColor"
-                  className="absolute right-0 w-8 h-8 dark:text-default-600"
+                  className="absolute right-0 w-8 h-8 text-yellow-500"
                 >
                   <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
                   <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
@@ -146,7 +146,7 @@ const Testimonials = () => {
               <img
                 src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
                 alt=""
-                className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+                className="w-16 h-16 mb-2 -mt-16 bg-center border-4 border-yellow-500 bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
               />
               <p className="text-xl font-semibold leading-tight">
                 John doe

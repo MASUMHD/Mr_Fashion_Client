@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Lottie from "lottie-react";
 import FAQ from "../../../public/FAQ.json";
 
@@ -40,7 +41,7 @@ const FAQS = () => {
 
           <div className="collapse collapse-arrow bg-base-200">
             <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium text-gray-800 bg-yellow-400 hover:bg-blue-200">
+            <div className="collapse-title text-xl font-medium text-gray-800 bg-yellow-400  hover:bg-blue-200">
               What payment methods do you accept?
             </div>
             <div className="collapse-content text-gray-600 bg-gray-50">
