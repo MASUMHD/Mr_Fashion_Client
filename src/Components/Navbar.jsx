@@ -1,15 +1,25 @@
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaHeart,
+  FaRandom,
+  FaShoppingBag,
+} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import UseAuth from "./Hooks/UseAuth";
+import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user } = UseAuth();
+  console.log("navbar", user?.email);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const navLinks = [
+  const navLinks = (
     <>
       <NavLink
         to="/"
@@ -26,7 +36,9 @@ const Navbar = () => {
       <NavLink
         to="/shop"
         className={({ isActive }) =>
-          isActive ? "text-yellow-500 border-b-2 border-yellow-500" : "hover:text-yellow-500"
+          isActive
+            ? "text-yellow-500 border-b-2 border-yellow-500"
+            : "hover:text-yellow-500"
         }
       >
         <li>
@@ -63,8 +75,8 @@ const Navbar = () => {
           <p>Contact Us</p>
         </li>
       </NavLink>
-    </>,
-  ];
+    </>
+  );
 
   return (
     <div className="bg-black text-white fixed top-0 left-0 right-0 z-50">
@@ -75,7 +87,7 @@ const Navbar = () => {
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgwKS8zeocPzj1XVp7MjuU8dOvpgkBn0-eKQ&s"
               alt="Logo"
-              className="w-12 lg:w-20 object-cover "
+              className="w-12 lg:w-20 object-cover"
             />
             <div>
               <span className="text-yellow-500 font-bold text-2xl">
@@ -93,51 +105,41 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end flex items-center space-x-4">
-          <a className=" hidden lg:block">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-500 border-b-2 border-yellow-500"
-                  : "hover:text-yellow-500"
-              }
-              to="/Login"
-            >
-              <button className="hover:text-yellow-500 font-semibold">
-                Login
-              </button>
-            </NavLink>{" "}
-            /{" "}
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-500 border-b-2 border-yellow-500"
-                  : "hover:text-yellow-500"
-              }
-              to="/Register"
-            >
-              <button className="hover:text-yellow-500 font-semibold">
-                Register
-              </button>
-            </NavLink>
-          </a>
-          <a className="text-xl hover:text-yellow-500 hidden lg:block">
-            <i className="far fa-heart"></i>
-          </a>
-          <a className="text-xl hover:text-yellow-500 hidden lg:block">
-            <i className="fas fa-random"></i>
-          </a>
+          <NavLink
+            to="/Login"
+            className={({ isActive }) =>
+              isActive
+                ? "text-yellow-500 border-b-2 border-yellow-500"
+                : "hover:text-yellow-500"
+            }
+          >
+            <button className="hover:text-yellow-500 font-semibold">
+              Login
+            </button>
+          </NavLink>{" "}
+          /
+          <NavLink
+            to="/Register"
+            className={({ isActive }) =>
+              isActive
+                ? "text-yellow-500 border-b-2 border-yellow-500"
+                : "hover:text-yellow-500"
+            }
+          >
+            <button className="hover:text-yellow-500 font-semibold">
+              Register
+            </button>
+          </NavLink>
+          <FaHeart className="text-xl hover:text-yellow-500 hidden lg:block" />
+          <FaRandom className="text-xl hover:text-yellow-500 hidden lg:block" />
           <div className="relative hidden lg:block">
-            <a className="text-xl hover:text-yellow-500">
-              <i className="fas fa-shopping-bag"></i>
-            </a>
+            <FaShoppingBag className="text-xl hover:text-yellow-500" />
             <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
               0
             </span>
           </div>
-          <span className="text-yellow-500 font-bold text-lg hidden lg:block">
-            ৳0
-          </span>
-
+          {/* Dropdown */}
+          <Dropdown />
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMenu} className="lg:hidden">
             {menuOpen ? (
@@ -154,48 +156,41 @@ const Navbar = () => {
         <div className="lg:hidden bg-gray-900 text-white p-4">
           <ul className="space-y-4">{navLinks}</ul>
           <div className="mt-4 space-y-2">
-            <p className="block ">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-yellow-500 border-b-2 border-yellow-500"
-                    : "hover:text-yellow-500"
-                }
-                to="/Login"
-              >
-                <button className="hover:text-yellow-500 font-semibold">
-                  Login
-                </button>
-              </NavLink>{" "}
-              /{" "}
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-yellow-500 border-b-2 border-yellow-500"
-                    : "hover:text-yellow-500"
-                }
-                to="/Register"
-              >
-                <button className="hover:text-yellow-500 font-semibold">
-                  Register
-                </button>
-              </NavLink>
-            </p>
-            <a className="block text-xl hover:text-yellow-500">
-              <i className="far fa-heart"></i>
-            </a>
-            <a className="block text-xl hover:text-yellow-500">
-              <i className="fas fa-random"></i>
-            </a>
-            <div className="relative block">
-              <a className="text-xl hover:text-yellow-500">
-                <i className="fas fa-shopping-bag"></i>
-              </a>
+            <NavLink
+              to="/Login"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-yellow-500 border-b-2 border-yellow-500"
+                  : "hover:text-yellow-500"
+              }
+            >
+              <button className="hover:text-yellow-500 font-semibold">
+                Login
+              </button>
+            </NavLink>{" "}
+            /
+            <NavLink
+              to="/Register"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-yellow-500 border-b-2 border-yellow-500"
+                  : "hover:text-yellow-500"
+              }
+            >
+              <button className="hover:text-yellow-500 font-semibold">
+                Register
+              </button>
+            </NavLink>
+            <FaHeart className="text-xl hover:text-yellow-500" />
+            <FaRandom className="text-xl hover:text-yellow-500" />
+            <div className="relative">
+              <FaShoppingBag className="text-xl hover:text-yellow-500" />
               <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
                 0
               </span>
             </div>
-            <span className="block text-yellow-500 font-bold text-lg">৳0</span>
+            {/* Dropdown */}
+              <Dropdown />
           </div>
         </div>
       )}
