@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Outlet } from "react-router-dom";
 import DashNavBar from "./DashNavBar";
 
 const Dashboard = ({ SideBarToggle, setSideBarToggle }) => {
@@ -12,11 +13,8 @@ const Dashboard = ({ SideBarToggle, setSideBarToggle }) => {
         SideBarToggle={SideBarToggle}
         setSideBarToggle={setSideBarToggle}
       />
-      <div className="mt-8">
-        <h1 className="text-3xl font-bold text-gray-700">
-          Welcome Back, Dashboard
-        </h1>
-        {/* Other Dashboard content goes here */}
+      <div className="mt-8 text-center ">
+        <Outlet />
       </div>
     </div>
   );

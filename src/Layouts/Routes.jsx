@@ -6,6 +6,9 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import Shop from "../Pages/Shop";
 import DasMain from "../Pages/DasMain";
+import AllUsers from "../Components/Dashboard/All components/AllUsers";
+import AllProduct from "../Components/Dashboard/All components/AllProduct";
+import DasHome from "../Components/Dashboard/All components/DasHome";
 
 export const router = createBrowserRouter([
   {
@@ -28,16 +31,25 @@ export const router = createBrowserRouter([
       {
         path: "/Shop",
         element: <Shop />,
-      }
+      },
     ],
   },
   {
     path: "/dashboard",
-    element: <DasMain/>,
+    element: <DasMain />,
     children: [
       {
-        path: '/dashboard',
+        path: "/dashboard",
+        element: <DasHome />,
       },
+      {
+        path: "/dashboard/users",
+        element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/products",
+        element: <AllProduct />,
+      }
     ],
-  }
+  },
 ]);
