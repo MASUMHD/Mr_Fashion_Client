@@ -18,7 +18,7 @@ const Dropdown = () => {
           tabIndex={0}
           className="dropdown-content menu bg-yellow-400 text-black font-bold rounded-box z-[1] w-32 p-2 mt-3 shadow"
         >
-          <Link to="">
+          <Link to="/dashboard">
             <li className="">
               <p>Dashboard</p>
             </li>
