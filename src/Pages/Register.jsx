@@ -4,28 +4,49 @@ import SocialLogin from "./SocialLogin";
 import UseAuth from "../Components/Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Components/Hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser } = UseAuth();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
+
     createUser(data.email, data.password)
       .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Registration Successful",
-          text: "Your account has been created successfully!",
-        });
-        navigator("/");
+        const user = {
+          email: data.email,
+          role: data.role,
+        };
+
+        // Send user data to the database
+        axiosPublic
+          .post("/users", user)
+          .then((response) => {
+            console.log("User saved to database:", response.data);
+            Swal.fire({
+              icon: "success",
+              title: "Registration Successful",
+              text: "Your account has been created successfully!",
+            });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error saving user to database:", error);
+            Swal.fire({
+              icon: "error",
+              title: "Database Error",
+              text: error.response?.data?.message || "Failed to save user data.",
+            });
+          });
       })
       .catch((error) => {
         console.error("Error during registration:", error);
