@@ -42,19 +42,10 @@ const Navbar = () => {
         }
       >
         <li>
-          <p>Shop</p>
+          <p>Products</p>
         </li>
       </NavLink>
-      <NavLink
-        to="/blog"
-        className={({ isActive }) =>
-          isActive ? "text-yellow-500" : "hover:text-yellow-500"
-        }
-      >
-        <li>
-          <p>Blog</p>
-        </li>
-      </NavLink>
+      
       <NavLink
         to="/about"
         className={({ isActive }) =>
@@ -77,6 +68,7 @@ const Navbar = () => {
       </NavLink>
     </>
   );
+  
 
   return (
     <div className="bg-black text-white fixed top-0 left-0 right-0 z-50">

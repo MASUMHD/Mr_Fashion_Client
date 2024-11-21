@@ -9,7 +9,7 @@ const DasMain = () => {
   return (
     <div>
       <Helmet>
-        <title>Doc | Dashboard</title>
+        <title>Mr. Fashion | Dashboard</title>
       </Helmet>
 
       <div className="flex">

@@ -4,11 +4,12 @@ import ErrorPage from "../Components/ErrorPage";
 import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
-import Shop from "../Pages/Shop";
+import Shop from "../Pages/Products";
 import DasMain from "../Pages/DasMain";
 import AllUsers from "../Components/Dashboard/All components/AllUsers";
 import AllProduct from "../Components/Dashboard/All components/AllProduct";
 import DasHome from "../Components/Dashboard/All components/DasHome";
+import Contact from "../Pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
         path: "/Shop",
         element: <Shop />,
       },
+      {
+        path: "/contact",
+        element: <Contact />,
+      }
     ],
   },
   {
