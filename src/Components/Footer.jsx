@@ -130,9 +130,9 @@ const Footer = () => {
             <h6 className="text-lg font-semibold text-yellow-500">
               CONTACT US
             </h6>
-            <p className="mt-2">KlbTheme, 789 Main Rd, Anytown, CA 12345 USA</p>
+            <p className="mt-2">Mr. Fashion, 789 Main Rd, Anytown, CA 12345 USA</p>
             <p className="mt-2">+888 456-7890</p>
-            <p className="mt-2">Qualis@klbtheme.com</p>
+            <p className="mt-2">mrfashion@klbtheme.com</p>
             <div className="flex gap-4 mt-4">
               <FaFacebookF className="text-2xl cursor-pointer bg-blue-500 text-white p-1 rounded h-8 w-8  hover:text-white" />
               <FaTwitter className="text-2xl cursor-pointer bg-[#1da1f2] text-white p-1 rounded h-8 w-8 hover:text-white" />
@@ -147,7 +147,7 @@ const Footer = () => {
       <footer>
         <hr />
         <div className="text-center mt-10 pb-10">
-          <p>© 2024 KlbTheme. All Rights Reserved.</p>
+          <p>© 2024 MR FASHION. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
