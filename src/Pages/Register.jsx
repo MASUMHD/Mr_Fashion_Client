@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import SocialLogin from "./SocialLogin";
 import UseAuth from "../Components/Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = UseAuth();
@@ -18,8 +19,22 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password)
-      .then(() => navigator("/"))
-      .catch((error) => console.log("error", error));
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successful",
+          text: "Your account has been created successfully!",
+        });
+        navigator("/");
+      })
+      .catch((error) => {
+        console.error("Error during registration:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: error.message || "Something went wrong. Please try again.",
+        });
+      });
   };
 
   return (
@@ -42,9 +57,17 @@ const Register = () => {
               id="email"
               placeholder="Enter your email"
               className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              required
-              {...register("email")}
+              {...register("email", {
+                required: "Email is required.",
+                pattern: {
+                  value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: "Please enter a valid email.",
+                },
+              })}
             />
+            {errors.email && (
+              <span className="text-red-600">{errors.email.message}</span>
+            )}
           </div>
 
           <div className="mb-4">
@@ -59,13 +82,24 @@ const Register = () => {
               id="password"
               placeholder="Enter your password"
               className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              required
-              {...register("password")}
+              {...register("password", {
+                required: "Password is required.",
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/,
+                  message:
+                    "Password must be at least 8 characters long, include uppercase and lowercase letters, one number, and one special character.",
+                },
+              })}
             />
+            {errors.password && (
+              <span className="text-red-600">{errors.password.message}</span>
+            )}
           </div>
+
           <div className="mb-4">
             <label
-              htmlFor="password"
+              htmlFor="confirm-password"
               className="block text-sm font-medium text-gray-700"
             >
               Confirm Password
@@ -73,16 +107,12 @@ const Register = () => {
             <input
               type="password"
               id="confirm-password"
-              placeholder="Enter your password"
+              placeholder="Confirm your password"
               className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              required
               {...register("confirmPassword", {
-                required: true,
-                validate: (value) => {
-                  if (watch("password") != value) {
-                    return "Passwords do not match";
-                  }
-                },
+                required: "Confirm Password is required.",
+                validate: (value) =>
+                  value === watch("password") || "Passwords do not match.",
               })}
             />
             {errors.confirmPassword && (
@@ -91,6 +121,7 @@ const Register = () => {
               </span>
             )}
           </div>
+
           <div className="mb-4">
             <label
               htmlFor="role"
@@ -100,18 +131,20 @@ const Register = () => {
             </label>
             <select
               className="select select-bordered w-full mt-1"
-              required
-              {...register("role")}
+              {...register("role", { required: "Role is required." })}
             >
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
+            {errors.role && (
+              <span className="text-red-600">{errors.role.message}</span>
+            )}
           </div>
 
           <div className="mb-4">
             <button
               type="submit"
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg  transition duration-300"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg transition duration-300"
             >
               Register
             </button>
@@ -128,7 +161,7 @@ const Register = () => {
 
           <div className="text-center">
             <p className="text-base text-gray-500">
-              Don't have an account?{" "}
+              Already have an account?{" "}
               <a
                 href="/Login"
                 className="text-yellow-500 font-bold hover:underline"
