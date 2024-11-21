@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import SocialLogin from "./SocialLogin";
+import UseAuth from "../Components/Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const { createUser } = UseAuth();
   const {
     register,
     handleSubmit,
@@ -10,8 +13,13 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navigator = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+      .then(() => navigator("/"))
+      .catch((error) => console.log("error", error));
   };
 
   return (

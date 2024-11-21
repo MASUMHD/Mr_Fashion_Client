@@ -1,12 +1,38 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import SocialLogin from "./SocialLogin";
+import UseAuth from "../Components/Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"; // Import SweetAlert
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { login } = UseAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const navigator = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
+    login(data.email, data.password)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "Welcome back!",
+        });
+        navigator("/");
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: error.message || "Invalid email or password. Please try again.",
+        });
+      });
   };
 
   return (
@@ -29,8 +55,13 @@ const Login = () => {
             placeholder="Enter your email"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             required
-            {...register("email")}
+            {...register("email", {
+              required: "Email is required.",
+            })}
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
         </div>
 
         <div className="mb-4">
@@ -46,14 +77,23 @@ const Login = () => {
             placeholder="Enter your password"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             required
-            {...register("password")}
+            {...register("password", {
+              required: "Password is required.",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters long.",
+              },
+            })}
           />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
         </div>
 
         <div className="mb-4">
           <button
             type="submit"
-            className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg  transition duration-300"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg transition duration-300"
           >
             Login
           </button>
