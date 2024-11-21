@@ -13,7 +13,6 @@ import Dropdown from "./Dropdown";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = UseAuth();
-  console.log("navbar", user?.email);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -68,7 +67,7 @@ const Navbar = () => {
       </NavLink>
     </>
   );
-  
+
 
   return (
     <div className="bg-black text-white fixed top-0 left-0 right-0 z-50">

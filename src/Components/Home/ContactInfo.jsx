@@ -1,8 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 import Lottie from "lottie-react";
 import contact from "../../../public/contact.json";
+import Swal from "sweetalert2";
 
 const ContactInfo = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Thank you!",
+      text: "Your message has been sent successfully!",
+      icon: "success",
+      confirmButtonText: "Close",
+    });
+    e.target.reset();
+  }
+
   return (
     <div className=" mb-16">
         <div className="">
@@ -15,7 +28,7 @@ const ContactInfo = () => {
         </div>
 
         {/* Right Section: Contact Form */}
-        <form
+        <form onSubmit={handleSubmit}
           noValidate=""
           className="space-y-6 border border-yellow-500 p-4 lg:p-8 rounded-lg w-full  "
         >
