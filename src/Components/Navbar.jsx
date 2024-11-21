@@ -105,41 +105,50 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end flex items-center space-x-4">
-          <NavLink
-            to="/Login"
-            className={({ isActive }) =>
-              isActive
-                ? "text-yellow-500 border-b-2 border-yellow-500"
-                : "hover:text-yellow-500"
-            }
-          >
-            <button className="hover:text-yellow-500 font-semibold">
-              Login
-            </button>
-          </NavLink>{" "}
-          /
-          <NavLink
-            to="/Register"
-            className={({ isActive }) =>
-              isActive
-                ? "text-yellow-500 border-b-2 border-yellow-500"
-                : "hover:text-yellow-500"
-            }
-          >
-            <button className="hover:text-yellow-500 font-semibold">
-              Register
-            </button>
-          </NavLink>
+          {!user && (
+            <>
+              <NavLink
+                to="/Login"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-500 border-b-2 border-yellow-500"
+                    : "hover:text-yellow-500"
+                }
+              >
+                <button className="hover:text-yellow-500 font-semibold -mr-2">
+                  Login 
+                </button>
+              </NavLink>{" "}
+              <span className="hover:text-white">/</span>
+              <NavLink
+                to="/Register"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-500 border-b-2 border-yellow-500"
+                    : "hover:text-yellow-500"
+                }
+              >
+                <button className="hover:text-yellow-500 font-semibold -ml-2">
+                  Register
+                </button>
+              </NavLink>
+            </>
+          )}
+
           <FaHeart className="text-xl hover:text-yellow-500 hidden lg:block" />
           <FaRandom className="text-xl hover:text-yellow-500 hidden lg:block" />
           <div className="relative hidden lg:block">
             <FaShoppingBag className="text-xl hover:text-yellow-500" />
-            <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
+            <span className="badge badge-sm absolute -top-3 -right-2 bg-yellow-500 text-black">
               0
             </span>
           </div>
           {/* Dropdown */}
-          <Dropdown />
+          {
+            user && (
+              <Dropdown />
+            )
+          }
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMenu} className="lg:hidden">
             {menuOpen ? (
@@ -156,41 +165,49 @@ const Navbar = () => {
         <div className="lg:hidden bg-gray-900 text-white p-4">
           <ul className="space-y-4">{navLinks}</ul>
           <div className="mt-4 space-y-2">
-            <NavLink
-              to="/Login"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-500 border-b-2 border-yellow-500"
-                  : "hover:text-yellow-500"
-              }
-            >
-              <button className="hover:text-yellow-500 font-semibold">
-                Login
-              </button>
-            </NavLink>{" "}
-            /
-            <NavLink
-              to="/Register"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-yellow-500 border-b-2 border-yellow-500"
-                  : "hover:text-yellow-500"
-              }
-            >
-              <button className="hover:text-yellow-500 font-semibold">
-                Register
-              </button>
-            </NavLink>
-            <FaHeart className="text-xl hover:text-yellow-500" />
-            <FaRandom className="text-xl hover:text-yellow-500" />
-            <div className="relative">
-              <FaShoppingBag className="text-xl hover:text-yellow-500" />
-              <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
-                0
-              </span>
-            </div>
-            {/* Dropdown */}
-              <Dropdown />
+            {!user && (
+              <>
+                <NavLink
+                  to="/Login"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-yellow-500 border-b-2 border-yellow-500"
+                      : "hover:text-yellow-500"
+                  }
+                >
+                  <button className="hover:text-yellow-500 font-semibold">
+                    Login
+                  </button>
+                </NavLink>{" "}
+                 <span className="ml-2">/</span>
+                <NavLink
+                  to="/Register"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-yellow-500 border-b-2 border-yellow-500"
+                      : "hover:text-yellow-500"
+                  }
+                >
+                  <button className="hover:text-yellow-500 font-semibold">
+                    Register
+                  </button>
+                </NavLink>
+              </>
+            )}
+            {user && (
+              <>
+                <FaHeart className="text-xl hover:text-yellow-500" />
+                <FaRandom className="text-xl hover:text-yellow-500" />
+                <div className="relative">
+                  <FaShoppingBag className="text-xl hover:text-yellow-500" />
+                  <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
+                    0
+                  </span>
+                </div>
+                {/* Dropdown */}
+                <Dropdown />
+              </>
+            )}
           </div>
         </div>
       )}
