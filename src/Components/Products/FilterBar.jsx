@@ -1,16 +1,33 @@
 /* eslint-disable react/prop-types */
 import { GrPowerReset } from "react-icons/gr";
 import { TbFilter } from "react-icons/tb";
+import SearchBar from "./SearchBar";
+import SortByPrice from "./SortByPrice";
 
-const FilterBar = ({ setBrand, setCategory, handleReset, uniqBrand, uniqCategory }) => {
+const FilterBar = ({
+  setBrand,
+  setCategory,
+  handleReset,
+  uniqBrand,
+  uniqCategory,
+}) => {
   return (
-    <div className="bg-base-200 p-4 h-full min-h-screen rounded-t-md">
+    <div className="bg-base-200 p-4 h-full lg:min-h-screen rounded-t-md">
       <div className="flex items-center gap-2 justify-center mt-5">
         <TbFilter size={24} />
         <h2 className="text-xl font-bold">Filters</h2>
       </div>
 
       <div className="mt-5 flex flex-col gap-2 items-center">
+        {/* lg to hed */}
+        <div className="w-full lg:hidden block">
+          <div className="w-full my-2">
+            <SearchBar />
+          </div>
+          <div className="w-full">
+          <SortByPrice />
+          </div>
+        </div>
         <div className="w-full">
           <select
             className="p-[11px] w-full border border-black rounded-md"
