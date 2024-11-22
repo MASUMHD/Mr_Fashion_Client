@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../Layouts/Main";
 import ErrorPage from "../Components/ErrorPage";
 import Home from "../Pages/Home";
 import Register from "../Pages/Register";
@@ -11,11 +10,12 @@ import AllProduct from "../Components/Dashboard/All components/AllProduct";
 import DasHome from "../Components/Dashboard/All components/DasHome";
 import Contact from "../Pages/Contact";
 import AddNewProduct from "../Components/Dashboard/All components/AddNewProduct";
+import MainLayouts from "./MainLayouts";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <MainLayouts />,
     errorElement: <ErrorPage />,
     children: [
       {

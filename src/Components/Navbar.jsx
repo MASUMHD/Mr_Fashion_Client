@@ -7,7 +7,7 @@ import {
   FaShoppingBag,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import UseAuth from "./Hooks/UseAuth";
+import UseAuth from "./Hooks/useAuth";
 import Dropdown from "./Dropdown";
 
 const Navbar = () => {
