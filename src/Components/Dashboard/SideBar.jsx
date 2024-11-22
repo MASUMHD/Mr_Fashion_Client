@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { FaHome, FaUsers } from "react-icons/fa";
-import { MdMedicalServices } from "react-icons/md";
+import { MdMedicalServices, MdOutlineArrowBack } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import useUserData from "../Hooks/useUserData";
 
@@ -28,10 +28,10 @@ const SideBar = ({ SideBarToggle }) => {
       <ul className="mt-8 text-white font-bold ">
         <Link to="/dashboard">
           <li
-            className={`mb-2 py-2 px-3 rounded ${
+            className={`mb-3 py-2 px-3 rounded ${
               location.pathname === "/dashboard"
                 ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                : "hover:bg-blue-500"
+                : "hover:bg-yellow-500 hover:text-black"
             }`}
           >
             <p className="flex items-center">
@@ -45,10 +45,10 @@ const SideBar = ({ SideBarToggle }) => {
         {user.role === "admin" && (
           <Link to="/dashboard/users">
             <li
-              className={`mb-2 py-2 px-3 rounded ${
+              className={`mb-3 py-2 px-3 rounded ${
                 location.pathname === "/dashboard/users"
                   ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                  : "hover:bg-blue-500"
+                  : "hover:bg-yellow-500 hover:text-black"
               }`}
             >
               <p className="flex items-center">
@@ -65,10 +65,10 @@ const SideBar = ({ SideBarToggle }) => {
           <>
             <Link to="/dashboard/products">
               <li
-                className={`mb-2 py-2 px-3 rounded ${
+                className={`mb-3 py-2 px-3 rounded ${
                   location.pathname === "/dashboard/products"
                     ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                    : "hover:bg-blue-500"
+                    : "hover:bg-yellow-500 hover:text-black"
                 }`}
               >
                 <p className="flex items-center">
@@ -79,10 +79,10 @@ const SideBar = ({ SideBarToggle }) => {
             </Link>
             <Link to="/dashboard/products">
               <li
-                className={`mb-2 py-2 px-3 rounded ${
+                className={`mb-3 py-2 px-3 rounded ${
                   location.pathname === "/dashboard/products"
                     ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                    : "hover:bg-blue-500"
+                    : "hover:bg-yellow-500 hover:text-black"
                 }`}
               >
                 <p className="flex items-center">
@@ -93,7 +93,7 @@ const SideBar = ({ SideBarToggle }) => {
             </Link>
           </>
         )}
-        
+
         {/* Show buyer */}
         {user.role === "buyer" && (
           <Link to="/">
@@ -101,7 +101,7 @@ const SideBar = ({ SideBarToggle }) => {
               className={`mb-2 py-2 px-3 rounded ${
                 location.pathname === "/dashboard/appointments"
                   ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                  : "hover:bg-blue-500"
+                  : "hover:bg-yellow-500 hover:text-black"
               }`}
             >
               <p className="flex items-center">
@@ -112,17 +112,16 @@ const SideBar = ({ SideBarToggle }) => {
           </Link>
         )}
 
+        <hr className="mt-20 "/>
+
         <Link to="/">
           <li
-            className={`mb-2 py-2 px-3 rounded ${
-              location.pathname === "/dashboard/appointments"
-                ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                : "hover:bg-blue-500"
-            }`}
+            className="mb-2 py-2 mt-5  px-3 rounded border hover:bg-yellow-500 hover:text-black border-white
+            "
           >
             <p className="flex items-center">
-              <BsChatSquareQuoteFill className="w-6 h-6 mr-2" />
-              Home
+              <MdOutlineArrowBack className="w-6 h-6 mr-2" />
+              Back to Home
             </p>
           </li>
         </Link>
