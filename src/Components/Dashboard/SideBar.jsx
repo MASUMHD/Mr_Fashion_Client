@@ -3,9 +3,11 @@ import { BsChatSquareQuoteFill } from "react-icons/bs";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { MdMedicalServices } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
+import useUserData from "../Hooks/useUserData";
 
 const SideBar = ({ SideBarToggle }) => {
   const location = useLocation();
+  const user = useUserData();
 
   return (
     <div
@@ -38,34 +40,78 @@ const SideBar = ({ SideBarToggle }) => {
             </p>
           </li>
         </Link>
-        <Link to="/dashboard/users">
-          <li
-            className={`mb-2 py-2 px-3 rounded ${
-              location.pathname === "/dashboard/users"
-                ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                : "hover:bg-blue-500"
-            }`}
-          >
-            <p className="flex items-center">
-              <FaUsers className="w-6 h-6 mr-2" />
-              All Users
-            </p>
-          </li>
-        </Link>
-        <Link to="/dashboard/products">
-          <li
-            className={`mb-2 py-2 px-3 rounded ${
-              location.pathname === "/dashboard/products"
-                ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
-                : "hover:bg-blue-500"
-            }`}
-          >
-            <p className="flex items-center">
-              <MdMedicalServices className="w-6 h-6 mr-2" />
-              Products
-            </p>
-          </li>
-        </Link>
+
+        {/* Show admin */}
+        {user.role === "admin" && (
+          <Link to="/dashboard/users">
+            <li
+              className={`mb-2 py-2 px-3 rounded ${
+                location.pathname === "/dashboard/users"
+                  ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
+                  : "hover:bg-blue-500"
+              }`}
+            >
+              <p className="flex items-center">
+                <FaUsers className="w-6 h-6 mr-2" />
+                All Users
+              </p>
+            </li>
+          </Link>
+        )}
+
+        {/* Show Seller */}
+
+        {user.role === "seller" && (
+          <>
+            <Link to="/dashboard/products">
+              <li
+                className={`mb-2 py-2 px-3 rounded ${
+                  location.pathname === "/dashboard/products"
+                    ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
+                    : "hover:bg-blue-500"
+                }`}
+              >
+                <p className="flex items-center">
+                  <MdMedicalServices className="w-6 h-6 mr-2" />
+                  Add a new product
+                </p>
+              </li>
+            </Link>
+            <Link to="/dashboard/products">
+              <li
+                className={`mb-2 py-2 px-3 rounded ${
+                  location.pathname === "/dashboard/products"
+                    ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
+                    : "hover:bg-blue-500"
+                }`}
+              >
+                <p className="flex items-center">
+                  <MdMedicalServices className="w-6 h-6 mr-2" />
+                  All product
+                </p>
+              </li>
+            </Link>
+          </>
+        )}
+        
+        {/* Show buyer */}
+        {user.role === "buyer" && (
+          <Link to="/">
+            <li
+              className={`mb-2 py-2 px-3 rounded ${
+                location.pathname === "/dashboard/appointments"
+                  ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
+                  : "hover:bg-blue-500"
+              }`}
+            >
+              <p className="flex items-center">
+                <BsChatSquareQuoteFill className="w-6 h-6 mr-2" />
+                Wishlist
+              </p>
+            </li>
+          </Link>
+        )}
+
         <Link to="/">
           <li
             className={`mb-2 py-2 px-3 rounded ${

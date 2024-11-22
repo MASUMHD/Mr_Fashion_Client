@@ -9,7 +9,7 @@ const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const axiosPublic = useAxiosPublic();
 
-  // Fetch users from the server
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -46,7 +46,7 @@ const AllUsers = () => {
     });
   };
 
-  // Edit user (Placeholder)
+  // update user 
   const handleEdit = (user) => {
     Swal.fire({
       title: "Edit User",
@@ -75,50 +75,14 @@ const AllUsers = () => {
       }
     });
   };
+  
 
-  // Define table columns
-  // const columns = useMemo(
-  //   () => [
-  //     {
-  //       Header: "No",
-  //       accessor: (_row, index) => index + 1,
-  //     },
-  //     {
-  //       Header: "Email",
-  //       accessor: "email",
-  //     },
-  //     {
-  //       Header: "Role",
-  //       accessor: "role",
-  //     },
-  //     {
-  //       Header: "Actions",
-  //       Cell: ({ row }) => (
-  //         <div className="flex gap-4">
-  //           <button
-  //             className="text-blue-500 hover:text-blue-700"
-  //             onClick={() => handleEdit(row.original)}
-  //           >
-  //             <FaEdit />
-  //           </button>
-  //           <button
-  //             className="text-red-500 hover:text-red-700"
-  //             onClick={() => handleDelete(row.original._id)}
-  //           >
-  //             <FaTrash />
-  //           </button>
-  //         </div>
-  //       ),
-  //     },
-  //   ],
-  //   [users]
-  // );
 
   const columns = [
     {
-      id: "index", // Use `id` instead of `accessorKey` for custom columns
+      id: "index",
       header: "No",
-      cell: ({ row }) => row.index + 1, // Use the row's `index` property
+      cell: ({ row }) => row.index + 1,
     },
     {
       accessorKey: "email",
@@ -133,14 +97,14 @@ const AllUsers = () => {
       header: "Actions",
       cell: ({ row }) => (
         <div className="flex justify-evenly text-lg">
-          {/* Edit Button */}
+          
           <button
             onClick={() => handleEdit(row.original)}
             className="text-blue-500 hover:text-blue-700 border border-blue-500 px-2 py-1 rounded"
           >
             <FaUserEdit />
           </button>
-          {/* Delete Button */}
+          
           <button
             onClick={() => handleDelete(row.original._id)}
             className="text-red-500 hover:text-red-700 border border-red-500 px-2 py-1 rounded"
