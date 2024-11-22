@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import { BsChatSquareQuoteFill } from "react-icons/bs";
-import { FaHome, FaUsers } from "react-icons/fa";
-import { MdMedicalServices, MdOutlineArrowBack } from "react-icons/md";
+import { FaHome, FaShoppingCart, FaUsers } from "react-icons/fa";
+import { MdMedicalServices, MdOutlineArrowBack, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import useUserData from "../Hooks/useUserData";
 
@@ -63,10 +62,10 @@ const SideBar = ({ SideBarToggle }) => {
 
         {user.role === "seller" && (
           <>
-            <Link to="/dashboard/products">
+            <Link to="/dashboard/addProducts">
               <li
                 className={`mb-3 py-2 px-3 rounded ${
-                  location.pathname === "/dashboard/products"
+                  location.pathname === "/dashboard/addProducts"
                     ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
                     : "hover:bg-yellow-500 hover:text-black"
                 }`}
@@ -86,8 +85,8 @@ const SideBar = ({ SideBarToggle }) => {
                 }`}
               >
                 <p className="flex items-center">
-                  <MdMedicalServices className="w-6 h-6 mr-2" />
-                  All product
+                  <MdOutlineProductionQuantityLimits className="w-6 h-6 mr-2" />
+                  All products
                 </p>
               </li>
             </Link>
@@ -105,7 +104,7 @@ const SideBar = ({ SideBarToggle }) => {
               }`}
             >
               <p className="flex items-center">
-                <BsChatSquareQuoteFill className="w-6 h-6 mr-2" />
+                <FaShoppingCart className="w-6 h-6 mr-2" />
                 Wishlist
               </p>
             </li>

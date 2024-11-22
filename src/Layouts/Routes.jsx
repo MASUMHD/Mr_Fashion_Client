@@ -10,6 +10,7 @@ import AllUsers from "../Components/Dashboard/All components/AllUsers";
 import AllProduct from "../Components/Dashboard/All components/AllProduct";
 import DasHome from "../Components/Dashboard/All components/DasHome";
 import Contact from "../Pages/Contact";
+import AddNewProduct from "../Components/Dashboard/All components/AddNewProduct";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/products",
         element: <AllProduct />,
+      },
+      {
+        path: "/dashboard/addProducts",
+        element: <AddNewProduct />,
       }
     ],
   },
