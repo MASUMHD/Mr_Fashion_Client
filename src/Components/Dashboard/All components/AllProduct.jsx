@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import UseAuth from "../../Hooks/useAuth";
+import UseAuth from "../../Hooks/UseAuth"
 import Swal from "sweetalert2";
 
 const AllProduct = () => {
@@ -145,9 +145,13 @@ const handleDelete = async (productId) => {
                 <span className="font-medium text-gray-800 text-base">Brand:</span>{" "}
                 {product.brand}
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 my-2">
                 <span className="font-medium text-gray-800 text-base">Category:</span>{" "}
                 {product.category}
+              </p>
+              <p className="text-sm text-gray-500">
+                <span className="font-medium text-gray-800 text-base">Stock:</span>{" "}
+                {product.stock}
               </p>
               <p className="text-gray-600 mt-3 text-sm">{product.description}</p>
             </div>
