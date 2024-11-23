@@ -62,7 +62,7 @@ const Products = () => {
 
       <div>
         <button
-          className="lg:hidden fixed top-20 left-4 p-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200"
+          className="lg:hidden fixed top-20 left-4 p-2 bg-yellow-500 text-black rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200"
           onClick={() => setIsDrawerOpen(true)}
         >
           <HiOutlineMenuAlt2 size={28} />
@@ -70,7 +70,7 @@ const Products = () => {
       </div>
 
       {/* Search and Sort */}
-      <div className="lg:flex justify-between items-center w-full mb-6 mt-20 hidden ">
+      <div className="lg:flex justify-between items-center w-full mb-6 mt-20 hidden bg-yellow-500 p-3 rounded-lg">
         <SearchBar handleSearch={handleSearch} />
         <SortByPrice setSort={setSort} />
         {/* Drawer Trigger for Small Devices */}
