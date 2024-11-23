@@ -5,17 +5,27 @@ import useUserData from "../../Hooks/useUserData";
 import { MdOutlineCancel } from "react-icons/md";
 import Loading from "../../Loading";
 import { Helmet } from "react-helmet";
+import UseAuth from "../../Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
   const axiosPublic = useAxiosPublic();
-  const user = useUserData();
+  const users = useUserData();
   const [wishlists, setWishlists] = useState([]);
+  const { user } = UseAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user?.email) {
+      navigate("/Login");
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     const fetchWishlist = async () => {
-      if (user?.email) {
+      if (users?.email) {
         try {
-          const response = await axiosPublic.get(`/wishlists/${user.email}`);
+          const response = await axiosPublic.get(`/wishlists/${users.email}`);
           setWishlists(response.data);
         } catch (error) {
           console.error("Error fetching wishlist:", error.message);
@@ -24,7 +34,7 @@ const Wishlist = () => {
     };
 
     fetchWishlist();
-  }, [user?.email, axiosPublic]);
+  }, [users?.email, axiosPublic]);
 
   const handleDelete = async (wishlistId) => {
     try {
@@ -99,7 +109,9 @@ const Wishlist = () => {
                 <p className="text-gray-600 mt-1">
                   <span className="font-medium">Category:</span> {item.category}
                 </p>
-                <p className="text-sm text-gray-500 mt-2">{item.description}</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}
