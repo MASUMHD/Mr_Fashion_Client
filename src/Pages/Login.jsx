@@ -4,6 +4,7 @@ import SocialLogin from "./SocialLogin";
 import UseAuth from "../Components/Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2"; // Import SweetAlert
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login } = UseAuth();
@@ -37,6 +38,9 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-gray-50">
+      <Helmet>
+        <title>Mr. Fashion | Login</title>
+      </Helmet>
       <h1 className="text-4xl font-bold text-center mb-8">Login</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}

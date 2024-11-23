@@ -5,6 +5,7 @@ import UseAuth from "../Components/Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Components/Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser } = UseAuth();
@@ -44,7 +45,8 @@ const Register = () => {
             Swal.fire({
               icon: "error",
               title: "Database Error",
-              text: error.response?.data?.message || "Failed to save user data.",
+              text:
+                error.response?.data?.message || "Failed to save user data.",
             });
           });
       })
@@ -60,6 +62,9 @@ const Register = () => {
 
   return (
     <div className="mt-0 lg:mt-10">
+      <Helmet>
+        <title>Mr. Fashion | Register</title>
+      </Helmet>
       <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-gray-50">
         <h1 className="text-4xl font-bold text-center mb-8">Register</h1>
         <form

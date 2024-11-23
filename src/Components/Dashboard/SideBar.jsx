@@ -95,10 +95,10 @@ const SideBar = ({ SideBarToggle }) => {
 
         {/* Show buyer */}
         {user.role === "buyer" && (
-          <Link to="/">
+          <Link to="/dashboard/Wishlist">
             <li
               className={`mb-2 py-2 px-3 rounded ${
-                location.pathname === "/dashboard/appointments"
+                location.pathname === "/dashboard/Wishlist"
                   ? "text-yellow-500 font-bold border border-yellow-500 rounded-lg"
                   : "hover:bg-yellow-500 hover:text-black"
               }`}
@@ -113,6 +113,17 @@ const SideBar = ({ SideBarToggle }) => {
 
         <hr className="mt-20 "/>
 
+        <Link to="/Shop">
+          <li
+            className="mb-2 py-2 mt-5  px-3 rounded border hover:bg-yellow-500 hover:text-black border-white
+            "
+          >
+            <p className="flex items-center">
+              <MdOutlineArrowBack className="w-6 h-6 mr-2" />
+              Back to Products 
+            </p>
+          </li>
+        </Link>
         <Link to="/">
           <li
             className="mb-2 py-2 mt-5  px-3 rounded border hover:bg-yellow-500 hover:text-black border-white

@@ -11,6 +11,7 @@ import DasHome from "../Components/Dashboard/All components/DasHome";
 import Contact from "../Pages/Contact";
 import AddNewProduct from "../Components/Dashboard/All components/AddNewProduct";
 import MainLayouts from "./MainLayouts";
+import Wishlist from "../Components/Dashboard/All components/Wishlist";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/addProducts",
         element: <AddNewProduct />,
+      },
+      {
+        path: "/dashboard/Wishlist",
+        element: <Wishlist />,
       }
     ],
   },

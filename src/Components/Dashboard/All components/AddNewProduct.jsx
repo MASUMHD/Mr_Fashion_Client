@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import UseAuth from "../../Hooks/useAuth";
+import UseAuth from "../../Hooks/UseAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddNewProduct = () => {
   const { user } = UseAuth();
-  const { register, handleSubmit , reset} = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const title = data.title;
@@ -52,6 +53,9 @@ const AddNewProduct = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Mr. Fashion | Add Products</title>
+      </Helmet>
       <h1 className="mb-5 text-3xl lg:text-4xl font-bold text-center text-black">
         Add Products
       </h1>
@@ -60,7 +64,9 @@ const AddNewProduct = () => {
           <div className="lg:flex gap-8 w-full">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-lg text-black font-bold">Title</span>
+                <span className="label-text text-lg text-black font-bold">
+                  Title
+                </span>
               </label>
               <input
                 type="text"
@@ -73,7 +79,9 @@ const AddNewProduct = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-black text-lg font-bold">Brand</span>
+                <span className="label-text text-black text-lg font-bold">
+                  Brand
+                </span>
               </label>
               <input
                 type="text"
@@ -89,7 +97,9 @@ const AddNewProduct = () => {
           <div className="lg:flex gap-8 w-full">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-black text-lg font-bold">Price</span>
+                <span className="label-text text-black text-lg font-bold">
+                  Price
+                </span>
               </label>
               <input
                 type="number"
@@ -102,7 +112,9 @@ const AddNewProduct = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-black text-lg font-bold">Stock</span>
+                <span className="label-text text-black text-lg font-bold">
+                  Stock
+                </span>
               </label>
               <input
                 type="number"
@@ -117,7 +129,9 @@ const AddNewProduct = () => {
           <div className="lg:flex gap-8 w-full">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-black text-lg font-bold">Category</span>
+                <span className="label-text text-black text-lg font-bold">
+                  Category
+                </span>
               </label>
               <input
                 type="text"
@@ -130,7 +144,9 @@ const AddNewProduct = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-black text-lg font-bold">Image URL</span>
+                <span className="label-text text-black text-lg font-bold">
+                  Image URL
+                </span>
               </label>
               <input
                 type="text"
@@ -145,7 +161,9 @@ const AddNewProduct = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black text-lg font-bold">Description</span>
+              <span className="label-text text-black text-lg font-bold">
+                Description
+              </span>
             </label>
             <textarea
               type="text"

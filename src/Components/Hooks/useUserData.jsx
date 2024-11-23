@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
-import useAuth from "./useAuth";
+import useAuth from "./UseAuth";
 import axios from "axios";
 
 const useUserData = () => {

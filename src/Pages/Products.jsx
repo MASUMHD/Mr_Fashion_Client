@@ -7,6 +7,7 @@ import useAxiosPublic from "../Components/Hooks/useAxiosPublic";
 import ProductsCard from "../Components/Products/ProductsCard";
 import { Dialog } from "@headlessui/react";
 import { HiOutlineMenuAlt2, HiX } from "react-icons/hi";
+import { Helmet } from "react-helmet";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -56,6 +57,9 @@ const Products = () => {
 
   return (
     <div className="container mx-auto mb-20">
+      <Helmet>
+        <title>Mr. Fashion | Products</title>
+      </Helmet>
       <h1 className="my-8 text-3xl font-semibold text-center text-gray-800">
         All Products
       </h1>

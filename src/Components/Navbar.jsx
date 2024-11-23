@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaBars,
   FaTimes,
@@ -6,13 +6,30 @@ import {
   FaRandom,
   FaShoppingBag,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
-import UseAuth from "./Hooks/useAuth";
+import { Link, NavLink } from "react-router-dom";
+import UseAuth from "../Components/Hooks/UseAuth";
 import Dropdown from "./Dropdown";
+import useAxiosPublic from "./Hooks/useAxiosPublic";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [wishlistLength, setWishlistLength] = useState(0);
   const { user } = UseAuth();
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    if (user) {
+      const fetchWishlist = async () => {
+        try {
+          const response = await axiosPublic.get(`/wishlists/${user.email}`);
+          setWishlistLength(response.data.length);
+        } catch (error) {
+          console.error("Error fetching wishlist:", error);
+        }
+      };
+      fetchWishlist();
+    }
+  }, [user, axiosPublic]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -44,7 +61,7 @@ const Navbar = () => {
           <p>Products</p>
         </li>
       </NavLink>
-      
+
       <NavLink
         to="/about"
         className={({ isActive }) =>
@@ -68,18 +85,19 @@ const Navbar = () => {
     </>
   );
 
-
   return (
     <div className="bg-black text-white fixed top-0 left-0 right-0 z-50">
       <div className="navbar container mx-auto">
         <div className="navbar-start flex items-center">
           {/* Logo */}
           <a className="flex items-center space-x-2">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgwKS8zeocPzj1XVp7MjuU8dOvpgkBn0-eKQ&s"
-              alt="Logo"
-              className="w-12 lg:w-20 object-cover"
-            />
+            <Link to="/">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgwKS8zeocPzj1XVp7MjuU8dOvpgkBn0-eKQ&s"
+                alt="Logo"
+                className="w-12 lg:w-20 object-cover"
+              />
+            </Link>
             <div>
               <span className="text-yellow-500 font-bold text-2xl">
                 Mr. Fashion
@@ -107,7 +125,7 @@ const Navbar = () => {
                 }
               >
                 <button className="hover:text-yellow-500 font-semibold -mr-2">
-                  Login 
+                  Login
                 </button>
               </NavLink>{" "}
               <span className="hover:text-white">/</span>
@@ -129,17 +147,15 @@ const Navbar = () => {
           <FaHeart className="text-xl hover:text-yellow-500 hidden lg:block" />
           <FaRandom className="text-xl hover:text-yellow-500 hidden lg:block" />
           <div className="relative hidden lg:block">
-            <FaShoppingBag className="text-xl hover:text-yellow-500" />
-            <span className="badge badge-sm absolute -top-3 -right-2 bg-yellow-500 text-black">
-              0
-            </span>
+            <Link to="/dashboard/Wishlist">
+              <FaShoppingBag className="text-xl hover:text-yellow-500" />
+              <span className="badge badge-sm absolute -top-3 -right-2 bg-yellow-500 text-black">
+                {wishlistLength} {/* Display wishlist length */}
+              </span>
+            </Link>
           </div>
           {/* Dropdown */}
-          {
-            user && (
-              <Dropdown />
-            )
-          }
+          {user && <Dropdown />}
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMenu} className="lg:hidden">
             {menuOpen ? (
@@ -170,7 +186,7 @@ const Navbar = () => {
                     Login
                   </button>
                 </NavLink>{" "}
-                 <span className="ml-2">/</span>
+                <span className="ml-2">/</span>
                 <NavLink
                   to="/Register"
                   className={({ isActive }) =>
@@ -190,9 +206,10 @@ const Navbar = () => {
                 <FaHeart className="text-xl hover:text-yellow-500" />
                 <FaRandom className="text-xl hover:text-yellow-500" />
                 <div className="relative">
+                  {/* wishlist length */}
                   <FaShoppingBag className="text-xl hover:text-yellow-500" />
                   <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
-                    0
+                    {wishlistLength} {/* Display wishlist length */}
                   </span>
                 </div>
                 {/* Dropdown */}

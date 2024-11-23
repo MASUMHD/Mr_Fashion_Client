@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import UseAuth from "../../Hooks/UseAuth"
+import UseAuth from "../../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import Loading from "../../Loading";
+import { Helmet } from "react-helmet";
 
 const AllProduct = () => {
   const axiosPublic = useAxiosPublic();
@@ -26,8 +28,7 @@ const AllProduct = () => {
     fetchProducts();
   }, [user, axiosPublic]);
 
- 
-const handleDelete = async (productId) => {
+  const handleDelete = async (productId) => {
     const confirmation = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -37,7 +38,7 @@ const handleDelete = async (productId) => {
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
     });
-  
+
     if (confirmation.isConfirmed) {
       try {
         const response = await axiosPublic.delete(`/products/${productId}`, {
@@ -57,7 +58,6 @@ const handleDelete = async (productId) => {
       }
     }
   };
-  
 
   const handleEdit = (product) => {
     Swal.fire({
@@ -95,7 +95,7 @@ const handleDelete = async (productId) => {
               },
             }
           );
-  
+
           if (response.status === 200) {
             Swal.fire("Updated!", "Product has been updated.", "success");
             setProducts((prev) =>
@@ -105,19 +105,33 @@ const handleDelete = async (productId) => {
             );
           }
         } catch (error) {
-            console.error("Error updating product:", error);
+          console.error("Error updating product:", error);
           Swal.fire("Error!", "Failed to update the product.", "error");
         }
       }
     });
   };
-  
 
-  if (!user) return <div>Loading user...</div>;
-  if (products.length === 0) return <div>No products available.</div>;
+  if (!user)
+    return (
+      <div>
+        <div>
+          <Loading />
+        </div>
+      </div>
+    );
+  if (products.length === 0)
+    return (
+      <div className="text-center text-2xl font-semibold">
+        No products available.
+      </div>
+    );
 
   return (
     <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-7xl">
+      <Helmet>
+        <title>Mr. Fashion | All Product</title>
+      </Helmet>
       {products.map((product) => (
         <div
           key={product._id}
@@ -142,18 +156,26 @@ const handleDelete = async (productId) => {
                 {product.title}
               </h2>
               <p className="text-sm text-gray-500 my-2">
-                <span className="font-medium text-gray-800 text-base">Brand:</span>{" "}
+                <span className="font-medium text-gray-800 text-base">
+                  Brand:
+                </span>{" "}
                 {product.brand}
               </p>
               <p className="text-sm text-gray-500 my-2">
-                <span className="font-medium text-gray-800 text-base">Category:</span>{" "}
+                <span className="font-medium text-gray-800 text-base">
+                  Category:
+                </span>{" "}
                 {product.category}
               </p>
               <p className="text-sm text-gray-500">
-                <span className="font-medium text-gray-800 text-base">Stock:</span>{" "}
+                <span className="font-medium text-gray-800 text-base">
+                  Stock:
+                </span>{" "}
                 {product.stock}
               </p>
-              <p className="text-gray-600 mt-3 text-sm">{product.description}</p>
+              <p className="text-gray-600 mt-3 text-sm">
+                {product.description}
+              </p>
             </div>
             <div className="mt-4 flex justify-end gap-3 items-center">
               <button
