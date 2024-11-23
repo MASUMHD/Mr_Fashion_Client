@@ -1,10 +1,61 @@
 /* eslint-disable react/prop-types */
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useUserData from "../Hooks/useUserData";
+import Swal from "sweetalert2";
 
 const ProductsCard = ({ product }) => {
-  const user = useUserData(); 
+  const user = useUserData();
+  const axiosPublic = useAxiosPublic();
 
-  const isRestrictedRole = user.role === "admin" || user.role === "seller";
+  const isRoleTrue = user.role === "admin" || user.role === "seller";
+
+  const handleAddToWishlist = async () => {
+    if (!user?.email) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "Please log in to add items to your wishlist.",
+      });
+      return;
+    }
+
+    const wishlistItem = {
+      email: user.email,
+      productId: product._id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+      brand: product.brand,
+      category: product.category,
+      description: product.description,
+    };
+
+    try {
+      const response = await axiosPublic.post("/wishlists", wishlistItem);
+      if (response.data?.message === "Wishlist already exists") {
+        Swal.fire({
+          icon: "info",
+          title: "Already Added",
+          text: "This product is already in your wishlist.",
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Added to Wishlist",
+          text: "Product has been successfully added to your wishlist.",
+        }).then(() => {
+          window.location.reload(); 
+        });
+      }
+    } catch (error) {
+      console.error("Error adding to wishlist:", error.message);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to add the product to your wishlist. Please try again.",
+      });
+    }
+  };
 
   return (
     <div>
@@ -49,12 +100,13 @@ const ProductsCard = ({ product }) => {
           <div className="mt-4">
             {/* Add to Wishlist button */}
             <button
+              onClick={handleAddToWishlist}
               className={`w-full primary-btn text-white font-bold py-2 px-4 rounded transition-colors duration-300 ${
-                isRestrictedRole
+                isRoleTrue
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-yellow-500 hover:bg-[#3183ffd4]"
               }`}
-              disabled={isRestrictedRole}
+              disabled={isRoleTrue}
             >
               Add to Wishlist
             </button>
