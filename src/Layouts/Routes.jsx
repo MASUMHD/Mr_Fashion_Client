@@ -12,6 +12,7 @@ import Contact from "../Pages/Contact";
 import AddNewProduct from "../Components/Dashboard/All components/AddNewProduct";
 import MainLayouts from "./MainLayouts";
 import Wishlist from "../Components/Dashboard/All components/Wishlist";
+import About from "../Pages/About";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       }
     ],
   },
