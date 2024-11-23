@@ -10,12 +10,16 @@ import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../Components/Hooks/UseAuth";
 import Dropdown from "./Dropdown";
 import useAxiosPublic from "./Hooks/useAxiosPublic";
+import useUserData from "./Hooks/useUserData";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [wishlistLength, setWishlistLength] = useState(0);
   const { user } = UseAuth();
   const axiosPublic = useAxiosPublic();
+
+  const users = useUserData();
+  const isRoleTrue = users.role === "admin" || users.role === "seller";
 
   useEffect(() => {
     if (user) {
@@ -147,12 +151,16 @@ const Navbar = () => {
           <FaHeart className="text-xl hover:text-yellow-500 hidden lg:block" />
           <FaRandom className="text-xl hover:text-yellow-500 hidden lg:block" />
           <div className="relative hidden lg:block">
-            <Link to="/dashboard/Wishlist">
-              <FaShoppingBag className="text-xl hover:text-yellow-500" />
-              <span className="badge badge-sm absolute -top-3 -right-2 bg-yellow-500 text-black">
-                {wishlistLength} {/* Display wishlist length */}
-              </span>
-            </Link>
+            {!isRoleTrue && (
+              <>
+                <Link to="/dashboard/Wishlist">
+                  <FaShoppingBag className="text-xl hover:text-yellow-500" />
+                  <span className="badge badge-sm absolute -top-3 -right-2 bg-yellow-500 text-black">
+                    {wishlistLength}
+                  </span>
+                </Link>
+              </>
+            )}
           </div>
           {/* Dropdown */}
           {user && <Dropdown />}
@@ -206,11 +214,15 @@ const Navbar = () => {
                 <FaHeart className="text-xl hover:text-yellow-500" />
                 <FaRandom className="text-xl hover:text-yellow-500" />
                 <div className="relative">
-                  {/* wishlist length */}
-                  <FaShoppingBag className="text-xl hover:text-yellow-500" />
-                  <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
-                    {wishlistLength} {/* Display wishlist length */}
-                  </span>
+                  {!isRoleTrue && (
+                    <>
+                      {/* wishlist length */}
+                      <FaShoppingBag className="text-xl hover:text-yellow-500" />
+                      <span className="badge badge-sm absolute -top-2 -right-2 bg-yellow-500 text-black">
+                        {wishlistLength}
+                      </span>
+                    </>
+                  )}
                 </div>
                 {/* Dropdown */}
                 <Dropdown />

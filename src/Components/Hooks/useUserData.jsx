@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
-import useAuth from "./UseAuth";
+import useAuth from "./useAuth";
 import axios from "axios";
 
 const useUserData = () => {
@@ -9,7 +9,9 @@ const useUserData = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const res = await axios.get(`http://localhost:4000/user/${user.email}`);
+            const res = await axios.get(`https://mr-fashion-server.vercel.app/user/${user.email}`, {
+                // withCredentials: true
+            });
             setUserData(res.data);
         };
 

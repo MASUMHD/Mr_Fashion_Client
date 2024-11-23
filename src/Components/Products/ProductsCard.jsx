@@ -8,6 +8,7 @@ const ProductsCard = ({ product }) => {
   const axiosPublic = useAxiosPublic();
 
   const isRoleTrue = user.role === "admin" || user.role === "seller";
+  
 
   const handleAddToWishlist = async () => {
     if (!user?.email) {

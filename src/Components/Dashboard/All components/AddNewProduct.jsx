@@ -31,10 +31,11 @@ const AddNewProduct = () => {
 
     const token = localStorage.getItem("access-token");
     axios
-      .post("http://localhost:4000/products", product, {
+      .post("https://mr-fashion-server.vercel.app/products", product, {
         headers: {
           authorization: `Bearer ${token}`,
         },
+        // withCredentials: true,
       })
       .then((res) => {
         if (res.data.insertedId) {
